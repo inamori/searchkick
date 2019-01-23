@@ -47,6 +47,7 @@ module Searchkick
         _id: search_id,
         _type: document_type
       }
+      data[:_parent] = record.search_parent_id if record.respond_to?(:search_parent_id)
       data[self.class.routing_key] = record.search_routing if record.respond_to?(:search_routing)
       data
     end
